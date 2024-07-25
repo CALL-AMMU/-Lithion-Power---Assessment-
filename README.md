@@ -1,6 +1,9 @@
 ## -Lithion-Power---Assessment-
 To measure 0 to 100V DC using a microcontroller like the ESP32, you can use a voltage divider circuit to step down the voltage to a range that the microcontroller's ADC (Analog-to-Digital Converter) can handle. The ESP32's ADC typically operates at a maximum input voltage of 3.3V.
 
+## IDE MP LAB
+## Compiler XC8
+
 Here's a step-by-step guide on how to do this:
 
 ## Design the Voltage Divider:
@@ -40,12 +43,12 @@ IDE and Compiler
 For this example, we'll assume you're using MPLAB X IDE, a popular choice for programming PIC microcontrollers. MPLAB X IDE includes its own C compiler specifically designed for PIC microcontrollers.
 
 ## Algorithm
-Initialization:
-Set up system clock and I/O pins.
-Configure the ADC module (enable, reference voltage, resolution).
+-> Initialization:
+-> Set up system clock and I/O pins.
+-> Configure the ADC module (enable, reference voltage, resolution).
 Main Loop:
-Read the ADC value from the pin connected to the voltage divider output.
-Calculate the actual voltage based on the voltage divider ratio and ADC reference voltage.
+-> Read the ADC value from the pin connected to the voltage divider output.
+-> Calculate the actual voltage based on the voltage divider ratio and ADC reference voltage.
 Optionally, display or process the measured voltage (e.g., using LEDs, sending data to a computer).
  
 
@@ -61,9 +64,9 @@ Optionally, display or process the measured voltage (e.g., using LEDs, sending d
                     |
                     V
         +-------------------+     +-------------------+
-        |  Read ADC Value   | -->|  Calculate Voltage |
+        |  Read ADC Value         Calculate Voltage |
         +-------------------+     +-------------------+
-                    |
+                    |                       
                     V (Yes)
         +-------------------+     +-------------------+
         |  Display/Process  | -->|  End of Loop?     |
