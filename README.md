@@ -335,11 +335,33 @@ void main(void)
 
 
 
+ ## Calculate achievable theoretical accuracy
+
+-> ADC Resolution: The ADC resolution determines the smallest voltage change the microcontroller can distinguish. For example, a 10-bit ADC with a 5V reference voltage can theoretically resolve voltage changes as small as:
+
+Resolution = (Reference Voltage) / (2^Number of Bits - 1)
+Resolution = (5V) / (2^10 - 1) ≈ 4.88 mV
 
 
+-> Voltage Divider Ratio: The voltage divider scales down the input voltage. The accuracy of this scaling depends on the resistor tolerances. Let R1 be the high-resistance resistor connected to the input voltage and R2 be the resistor connected to the microcontroller's ADC pin. The ideal output voltage (Vout) is:
 
+Vout = (Input Voltage) * (R2 / (R1 + R2))
 
+-> Calculate Error Due to Voltage Divider: The error due to the voltage divider is the difference between the ideal output voltage (Vout) and the average of the minimum and maximum output voltages (Vout_avg).
 
+Error_divider = abs(Vout - (Vout_min + Vout_max) / 2)
+
+-> Quantize Error Due to ADC Resolution: The ADC can only represent discrete voltage values based on its resolution. The quantization error is half the resolution of the ADC.
+
+Quantization_error = Resolution / 2
+
+-> Total Theoretical Error: The total theoretical error is the sum of the error due to the voltage divider and the quantization error.
+
+Total_error = Error_divider + Quantization_error
+
+-> Express Error as Percentage: To express the total error as a percentage of the full-scale input voltage (100V in this case), calculate:
+
+Percentage_error = (Total_error / 100V) * 100%
 
 
 
